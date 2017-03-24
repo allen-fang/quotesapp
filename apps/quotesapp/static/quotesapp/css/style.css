@@ -1,0 +1,114 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+/*LOGIN AND REGISTRATION PAGE*/
+
+.wrapper {
+	width: 70%;
+	margin: 50px auto;
+}
+
+h1 {
+	margin-bottom: 20px
+}
+
+.error ul {
+	list-style-type: none;
+	color: red;
+}
+
+.index-content {
+	display: flex;
+	justify-content: space-around;
+}
+
+.index-form {
+	width: 40%;
+	border: 1px solid black;
+	padding: 10px 15px 15px;
+	line-height: 1.8;
+}
+
+.index-form > form {
+	display: flex;
+	flex-direction: column;
+}
+
+.index-form > form input {
+	display: inline-block;
+	float: right;
+}
+
+/*DASHBOARD*/
+.header {
+	display: flex;	
+	justify-content: flex-end;
+}
+
+.content {
+	display: flex;
+	justify-content: space-between;
+}
+
+.content > * {
+	width: 40%;
+}
+
+.quote-entries {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.favorite-quotes {
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.entry {
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.add-quote {
+	line-height: 1.5
+}
+
+.add-quote  label {
+	display: block;
+}
+
+.add-quote span {
+	vertical-align: top;
+}
+
+.add-quote textarea {
+	height: 50px;
+	width: 200px;
+}
+
+/*USER PAGE*/
+
+.header a {
+	margin: 0 5px;
+}
+
+h3 {
+	margin-bottom: 10px;
+}
+
+.user-posts p {
+	margin-bottom: 10px;
+}
+
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quotes</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'quotesapp/css/style.css' %}">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<a href="/logout">Logout</a>
+		</div>
+		<h1>Welcome, {{user.alias}}</h1>
+		<div class="content">
+			<div class="quotes">
+				<h2>Quotable Quotes</h2>
+				<div class="quote-entries">
+					{% for quote in quotes %}
+						{% if user not in quote.favorites.all %}
+							<div class="entry">
+								<p>{{quote.author}}: {{quote.content}}</p>
+								<i>Posted by <a href="/users/{{quote.user.id}}">{{quote.user.alias}}</a></i>
+								<form action="/add_favorite/{{quote.id}}">
+									<input type="submit" value="Add to My List">
+								</form>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="user-column">
+				<div class="favorites">
+					<h2>Your Favorites</h2>
+					<div class="favorite-quotes">
+						{% for quote in quotes %}
+							{% if user in quote.favorites.all %}
+								<div class="entry">
+									<p>{{quote.author}}: {{quote.content}}</p>
+									<i>Posted by <a href="/users/{{quote.user.id}}">{{quote.user.alias}}</a></i>
+									<form action="/remove_favorite/{{quote.id}}">
+										<input type="submit" value="Remove From My List">
+									</form>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				{% if messages %}
+					<div class="error">
+						<ul>
+							{% for message in messages %}
+							<li>{{ message }}</li>
+						{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+				<div class="add-quote">
+					<h3>Contribute a Quote:</h3>
+					<form action="/add" method="post">
+					{% csrf_token %}
+						<label>Quoted By: <input type="text" name="author"></label>
+						<label><span>Message:</span> <textarea name="quote"></textarea></label>
+						<input type="submit" value="Submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
